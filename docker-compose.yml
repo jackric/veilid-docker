@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bash -c "veilid-server --config-file /config/veilid-server.config | tee --append /logs/veilid-server.log"
+    command: bash -c "veilid-server --config-file /config/veilid-server.yml | tee --append /logs/veilid-server.log"
     volumes:
       # Pass in the config for veilid-server from this working directory
       - ./config:/config
