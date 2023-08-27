@@ -1,0 +1,4 @@
+# Service state data that shouldn't go into the build
+./data
+./logs
+./state

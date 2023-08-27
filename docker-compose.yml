@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  veilid-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "veilid-server --config-file /config/veilid-server.config | tee --append /logs/veilid-server.log"
+    volumes:
+      # Pass in the config for veilid-server from this working directory
+      - ./config:/config
+      # State holds the node ID etc. to persist between runs
+      - ./state:/root/.local/share/veilid/
+      # Keep any persisted values in ./data
+      - ./data:/var/db/veilid-server
+      - ./logs:/logs
